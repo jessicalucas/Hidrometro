@@ -1,0 +1,7 @@
+{
+  "name": "Hidrometro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
