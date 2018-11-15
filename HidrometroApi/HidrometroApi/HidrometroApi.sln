@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HidrometroApi", "HidrometroApi\HidrometroApi.csproj", "{3161E36A-40E4-48CE-8EAE-AE2CB6ED06A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HidrometroApi.Tests", "HidrometroApi.Tests\HidrometroApi.Tests.csproj", "{B140FA3E-EF8B-483D-BAC9-B8DDD697AAA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3161E36A-40E4-48CE-8EAE-AE2CB6ED06A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3161E36A-40E4-48CE-8EAE-AE2CB6ED06A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3161E36A-40E4-48CE-8EAE-AE2CB6ED06A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3161E36A-40E4-48CE-8EAE-AE2CB6ED06A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B140FA3E-EF8B-483D-BAC9-B8DDD697AAA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B140FA3E-EF8B-483D-BAC9-B8DDD697AAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B140FA3E-EF8B-483D-BAC9-B8DDD697AAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B140FA3E-EF8B-483D-BAC9-B8DDD697AAA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D3B551E-FA07-4C75-9CE2-4D03C13BA626}
+	EndGlobalSection
+EndGlobal
