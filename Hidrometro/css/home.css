@@ -1,20 +1,54 @@
-.navbar-inverse {
-    background-color: #208F96;
-    border-color: #208F96;
-}
-
-.navbar-inverse .navbar-nav>li>a {
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
     color: white;
 }
 
-.navbar-inverse .navbar-brand {
-    color: white;
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #007593;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.navbar-inverse .navbar-toggle {
-    border-color: white;
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ded9d9;
+    display: block;
+    transition: 0.3s;
 }
 
-.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: #208F96;
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.navbar-default {
+    background-color: #0095B9;
+    border-color: #0095B9;
 }
