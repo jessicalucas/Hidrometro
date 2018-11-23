@@ -950,7 +950,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 inputs[ props[i] ] = !!bool;
             }
             return inputs;
-        })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+        })('search tel url email DateTime date month week time DateTime-local number range color'.split(' '));
         /*>>inputtypes*/
     }
     /*>>webforms*/

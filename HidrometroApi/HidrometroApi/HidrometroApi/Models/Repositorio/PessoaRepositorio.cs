@@ -13,7 +13,7 @@ namespace HidrometroApi.Models.Repositorio
 
         public PessoaRepositorio()
         {
-            AddPessoa(new Pessoa { CPFCNPJ = "123.456.789.00", DataNascimento = new DateTime(2018, 04, 25), Email = "pessoa1@pessoas.com", IdPessoa = 1, Nome = "Pessoa 1", PessoaAtiva = true, Senha = "Pessoa1" });
+            AddPessoa(new Pessoa { CPF_CNPJ = "123.456.789.00", DataNascimento = new DateTime(2018, 04, 25), Email = "pessoa1@pessoas.com", IdPessoa = 1, Nome = "Pessoa 1", PessoaAtiva = true, Senha = "Pessoa1" });
         }
 
         public Pessoa AddPessoa(Pessoa item)

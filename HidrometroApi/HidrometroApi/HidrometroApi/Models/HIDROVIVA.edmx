@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HIDROVIVAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConsumoDiario">
+          <Key>
+            <PropertyRef Name="IdConsumoDiario" />
+          </Key>
+          <Property Name="IdConsumoDiario" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="IdPerfil" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="DataConsumo" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="M3Consumidos" Type="numeric" Precision="25" Scale="0" />
+        </EntityType>
+        <EntityType Name="ConsumoMensal">
+          <Key>
+            <PropertyRef Name="IdConsumoMensal" />
+          </Key>
+          <Property Name="IdConsumoMensal" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="IdConsumoDiario" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="TotalConsumido" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="Premiacao" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="Advertencia" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="MesAno" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="IdEndereco" />
+          </Key>
+          <Property Name="IdEndereco" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="200" />
+          <Property Name="Bairro" Type="varchar" MaxLength="200" />
+          <Property Name="Cidade" Type="varchar" MaxLength="200" />
+          <Property Name="Estado" Type="varchar" MaxLength="200" />
+          <Property Name="Pais" Type="varchar" MaxLength="200" />
+          <Property Name="Numero" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Instalacao">
+          <Key>
+            <PropertyRef Name="IdInstalacao" />
+          </Key>
+          <Property Name="IdInstalacao" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NumeroMoradores" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="TempoPermanenciaDiaria" Type="datetime" />
+          <Property Name="MediaConsumoDiario" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="ApelidoInstalacao" Type="varchar" MaxLength="200" />
+          <Property Name="InstalacaoUsoComum" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="InstalacaoAtiva" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="ParametroSistema">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="IdTaxa" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="QtdInstalacoes" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="MetaDeConsumoIndividual" Type="numeric" Precision="25" Scale="0" />
+          <Property Name="ValorParaAlerta" Type="numeric" Precision="25" Scale="0" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="IdPessoa" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="IdInstalacao" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="TipoPerfil" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="PerfilAtivo" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="IdPessoa" />
+          </Key>
+          <Property Name="IdPessoa" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CPF_CNPJ" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="IdEndereco" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="IdTelefone" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" />
+          <Property Name="Senha" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="DataNascimento" Type="datetime" />
+          <Property Name="PessoaAtiva" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="Taxas">
+          <Key>
+            <PropertyRef Name="IdTaxa" />
+          </Key>
+          <Property Name="IdTaxa" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="Valor" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="DataInicioVigencia" Type="datetime" />
+          <Property Name="DataFimVigencia" Type="datetime" />
+          <Property Name="QuantidadeMinimaM3" Type="numeric" Precision="25" Scale="0" />
+          <Property Name="QuantidadeMaximaM3" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Telefone">
+          <Key>
+            <PropertyRef Name="IdTelefone" />
+          </Key>
+          <Property Name="IdTelefone" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="Telefone1" Type="varchar" MaxLength="15" />
+          <Property Name="Telefone2" Type="varchar" MaxLength="15" />
+          <Property Name="Telefone3" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__ConsumoDi__IdPer__1920BF5C">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="0..1" />
+          <End Role="ConsumoDiario" Type="Self.ConsumoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="ConsumoDiario">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ConsumoMe__IdCon__24927208">
+          <End Role="ConsumoDiario" Type="Self.ConsumoDiario" Multiplicity="0..1" />
+          <End Role="ConsumoMensal" Type="Self.ConsumoMensal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumoDiario">
+              <PropertyRef Name="IdConsumoDiario" />
+            </Principal>
+            <Dependent Role="ConsumoMensal">
+              <PropertyRef Name="IdConsumoDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parametro__IdTax__25869641">
+          <End Role="Taxas" Type="Self.Taxas" Multiplicity="0..1" />
+          <End Role="ParametroSistema" Type="Self.ParametroSistema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxas">
+              <PropertyRef Name="IdTaxa" />
+            </Principal>
+            <Dependent Role="ParametroSistema">
+              <PropertyRef Name="IdTaxa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Perfil__IdInstal__239E4DCF">
+          <End Role="Instalacao" Type="Self.Instalacao" Multiplicity="0..1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instalacao">
+              <PropertyRef Name="IdInstalacao" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="IdInstalacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Perfil__IdPessoa__1273C1CD">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="IdPessoa" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="IdPessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pessoa__IdEndere__21B6055D">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="IdEndereco" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="IdEndereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pessoa__IdTelefo__22AA2996">
+          <End Role="Telefone" Type="Self.Telefone" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telefone">
+              <PropertyRef Name="IdTelefone" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="IdTelefone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HIDROVIVAModelStoreContainer">
+          <EntitySet Name="ConsumoDiario" EntityType="Self.ConsumoDiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsumoMensal" EntityType="Self.ConsumoMensal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instalacao" EntityType="Self.Instalacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParametroSistema" EntityType="Self.ParametroSistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxas" EntityType="Self.Taxas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telefone" EntityType="Self.Telefone" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ConsumoDi__IdPer__1920BF5C" Association="Self.FK__ConsumoDi__IdPer__1920BF5C">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="ConsumoDiario" EntitySet="ConsumoDiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ConsumoMe__IdCon__24927208" Association="Self.FK__ConsumoMe__IdCon__24927208">
+            <End Role="ConsumoDiario" EntitySet="ConsumoDiario" />
+            <End Role="ConsumoMensal" EntitySet="ConsumoMensal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parametro__IdTax__25869641" Association="Self.FK__Parametro__IdTax__25869641">
+            <End Role="Taxas" EntitySet="Taxas" />
+            <End Role="ParametroSistema" EntitySet="ParametroSistema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Perfil__IdInstal__239E4DCF" Association="Self.FK__Perfil__IdInstal__239E4DCF">
+            <End Role="Instalacao" EntitySet="Instalacao" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Perfil__IdPessoa__1273C1CD" Association="Self.FK__Perfil__IdPessoa__1273C1CD">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pessoa__IdEndere__21B6055D" Association="Self.FK__Pessoa__IdEndere__21B6055D">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pessoa__IdTelefo__22AA2996" Association="Self.FK__Pessoa__IdTelefo__22AA2996">
+            <End Role="Telefone" EntitySet="Telefone" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HIDROVIVAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ConsumoDiario">
+          <Key>
+            <PropertyRef Name="IdConsumoDiario" />
+          </Key>
+          <Property Name="IdConsumoDiario" Type="Int64" Nullable="false" />
+          <Property Name="IdPerfil" Type="Int64" />
+          <Property Name="DataConsumo" Type="DateTime" />
+          <Property Name="M3Consumidos" Type="Decimal" Precision="25" Scale="0" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK__ConsumoDi__IdPer__1920BF5C" FromRole="ConsumoDiario" ToRole="Perfil" />
+          <NavigationProperty Name="ConsumoMensal" Relationship="Self.FK__ConsumoMe__IdCon__24927208" FromRole="ConsumoDiario" ToRole="ConsumoMensal" />
+        </EntityType>
+        <EntityType Name="ConsumoMensal">
+          <Key>
+            <PropertyRef Name="IdConsumoMensal" />
+          </Key>
+          <Property Name="IdConsumoMensal" Type="Int64" Nullable="false" />
+          <Property Name="IdConsumoDiario" Type="Int64" />
+          <Property Name="TotalConsumido" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="Premiacao" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="Advertencia" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="MesAno" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ConsumoDiario" Relationship="Self.FK__ConsumoMe__IdCon__24927208" FromRole="ConsumoMensal" ToRole="ConsumoDiario" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="IdEndereco" />
+          </Key>
+          <Property Name="IdEndereco" Type="Int64" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK__Pessoa__IdEndere__21B6055D" FromRole="Endereco" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Instalacao">
+          <Key>
+            <PropertyRef Name="IdInstalacao" />
+          </Key>
+          <Property Name="IdInstalacao" Type="Int64" Nullable="false" />
+          <Property Name="NumeroMoradores" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="TempoPermanenciaDiaria" Type="DateTime" Precision="3" />
+          <Property Name="MediaConsumoDiario" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="ApelidoInstalacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InstalacaoUsoComum" Type="Int32" />
+          <Property Name="InstalacaoAtiva" Type="Decimal" Precision="1" Scale="0" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK__Perfil__IdInstal__239E4DCF" FromRole="Instalacao" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="ParametroSistema">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="Int64" Nullable="false" />
+          <Property Name="IdTaxa" Type="Int64" />
+          <Property Name="QtdInstalacoes" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="MetaDeConsumoIndividual" Type="Decimal" Precision="25" Scale="0" />
+          <Property Name="ValorParaAlerta" Type="Decimal" Precision="25" Scale="0" />
+          <NavigationProperty Name="Taxas" Relationship="Self.FK__Parametro__IdTax__25869641" FromRole="ParametroSistema" ToRole="Taxas" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="Int64" Nullable="false" />
+          <Property Name="IdPessoa" Type="Int64" />
+          <Property Name="IdInstalacao" Type="Int64" />
+          <Property Name="TipoPerfil" Type="Int32" />
+          <Property Name="PerfilAtivo" Type="Int32" />
+          <NavigationProperty Name="ConsumoDiario" Relationship="Self.FK__ConsumoDi__IdPer__1920BF5C" FromRole="Perfil" ToRole="ConsumoDiario" />
+          <NavigationProperty Name="Instalacao" Relationship="Self.FK__Perfil__IdInstal__239E4DCF" FromRole="Perfil" ToRole="Instalacao" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK__Perfil__IdPessoa__1273C1CD" FromRole="Perfil" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="IdPessoa" />
+          </Key>
+          <Property Name="IdPessoa" Type="Int64" Nullable="false" />
+          <Property Name="CPF_CNPJ" Type="String" />
+          <Property Name="IdEndereco" Type="Int64" />
+          <Property Name="IdTelefone" Type="Int64" />
+          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DataNascimento" Type="DateTime" Precision="3" />
+          <Property Name="PessoaAtiva" Type="Int32" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK__Pessoa__IdEndere__21B6055D" FromRole="Pessoa" ToRole="Endereco" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK__Perfil__IdPessoa__1273C1CD" FromRole="Pessoa" ToRole="Perfil" />
+          <NavigationProperty Name="Telefone" Relationship="Self.FK__Pessoa__IdTelefo__22AA2996" FromRole="Pessoa" ToRole="Telefone" />
+        </EntityType>
+        <EntityType Name="Taxas">
+          <Key>
+            <PropertyRef Name="IdTaxa" />
+          </Key>
+          <Property Name="IdTaxa" Type="Int64" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="DataInicioVigencia" Type="DateTime" Precision="3" />
+          <Property Name="DataFimVigencia" Type="DateTime" Precision="3" />
+          <Property Name="QuantidadeMinimaM3" Type="Decimal" Precision="25" Scale="0" />
+          <Property Name="QuantidadeMaximaM3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ParametroSistema" Relationship="Self.FK__Parametro__IdTax__25869641" FromRole="Taxas" ToRole="ParametroSistema" />
+        </EntityType>
+        <EntityType Name="Telefone">
+          <Key>
+            <PropertyRef Name="IdTelefone" />
+          </Key>
+          <Property Name="IdTelefone" Type="Int64" Nullable="false" />
+          <Property Name="Telefone1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK__Pessoa__IdTelefo__22AA2996" FromRole="Telefone" ToRole="Pessoa" />
+        </EntityType>
+        <Association Name="FK__ConsumoDi__IdPer__1920BF5C">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="0..1" />
+          <End Role="ConsumoDiario" Type="Self.ConsumoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="ConsumoDiario">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ConsumoMe__IdCon__24927208">
+          <End Role="ConsumoDiario" Type="Self.ConsumoDiario" Multiplicity="0..1" />
+          <End Role="ConsumoMensal" Type="Self.ConsumoMensal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumoDiario">
+              <PropertyRef Name="IdConsumoDiario" />
+            </Principal>
+            <Dependent Role="ConsumoMensal">
+              <PropertyRef Name="IdConsumoDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pessoa__IdEndere__21B6055D">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="IdEndereco" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="IdEndereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Perfil__IdInstal__239E4DCF">
+          <End Role="Instalacao" Type="Self.Instalacao" Multiplicity="0..1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instalacao">
+              <PropertyRef Name="IdInstalacao" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="IdInstalacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parametro__IdTax__25869641">
+          <End Role="Taxas" Type="Self.Taxas" Multiplicity="0..1" />
+          <End Role="ParametroSistema" Type="Self.ParametroSistema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxas">
+              <PropertyRef Name="IdTaxa" />
+            </Principal>
+            <Dependent Role="ParametroSistema">
+              <PropertyRef Name="IdTaxa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Perfil__IdPessoa__1273C1CD">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="IdPessoa" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="IdPessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pessoa__IdTelefo__22AA2996">
+          <End Role="Telefone" Type="Self.Telefone" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telefone">
+              <PropertyRef Name="IdTelefone" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="IdTelefone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HIDROVIVAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsumoDiario" EntityType="Self.ConsumoDiario" />
+          <EntitySet Name="ConsumoMensal" EntityType="Self.ConsumoMensal" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+          <EntitySet Name="Instalacao" EntityType="Self.Instalacao" />
+          <EntitySet Name="ParametroSistema" EntityType="Self.ParametroSistema" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+          <EntitySet Name="Taxas" EntityType="Self.Taxas" />
+          <EntitySet Name="Telefone" EntityType="Self.Telefone" />
+          <AssociationSet Name="FK__ConsumoDi__IdPer__1920BF5C" Association="Self.FK__ConsumoDi__IdPer__1920BF5C">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="ConsumoDiario" EntitySet="ConsumoDiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ConsumoMe__IdCon__24927208" Association="Self.FK__ConsumoMe__IdCon__24927208">
+            <End Role="ConsumoDiario" EntitySet="ConsumoDiario" />
+            <End Role="ConsumoMensal" EntitySet="ConsumoMensal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pessoa__IdEndere__21B6055D" Association="Self.FK__Pessoa__IdEndere__21B6055D">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Perfil__IdInstal__239E4DCF" Association="Self.FK__Perfil__IdInstal__239E4DCF">
+            <End Role="Instalacao" EntitySet="Instalacao" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parametro__IdTax__25869641" Association="Self.FK__Parametro__IdTax__25869641">
+            <End Role="Taxas" EntitySet="Taxas" />
+            <End Role="ParametroSistema" EntitySet="ParametroSistema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Perfil__IdPessoa__1273C1CD" Association="Self.FK__Perfil__IdPessoa__1273C1CD">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pessoa__IdTelefo__22AA2996" Association="Self.FK__Pessoa__IdTelefo__22AA2996">
+            <End Role="Telefone" EntitySet="Telefone" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HIDROVIVAModelStoreContainer" CdmEntityContainer="HIDROVIVAEntities">
+          <EntitySetMapping Name="ConsumoDiario">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.ConsumoDiario">
+              <MappingFragment StoreEntitySet="ConsumoDiario">
+                <ScalarProperty Name="IdConsumoDiario" ColumnName="IdConsumoDiario" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="DataConsumo" ColumnName="DataConsumo" />
+                <ScalarProperty Name="M3Consumidos" ColumnName="M3Consumidos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumoMensal">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.ConsumoMensal">
+              <MappingFragment StoreEntitySet="ConsumoMensal">
+                <ScalarProperty Name="IdConsumoMensal" ColumnName="IdConsumoMensal" />
+                <ScalarProperty Name="IdConsumoDiario" ColumnName="IdConsumoDiario" />
+                <ScalarProperty Name="TotalConsumido" ColumnName="TotalConsumido" />
+                <ScalarProperty Name="Premiacao" ColumnName="Premiacao" />
+                <ScalarProperty Name="Advertencia" ColumnName="Advertencia" />
+                <ScalarProperty Name="MesAno" ColumnName="MesAno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Endereco">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instalacao">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Instalacao">
+              <MappingFragment StoreEntitySet="Instalacao">
+                <ScalarProperty Name="IdInstalacao" ColumnName="IdInstalacao" />
+                <ScalarProperty Name="NumeroMoradores" ColumnName="NumeroMoradores" />
+                <ScalarProperty Name="TempoPermanenciaDiaria" ColumnName="TempoPermanenciaDiaria" />
+                <ScalarProperty Name="MediaConsumoDiario" ColumnName="MediaConsumoDiario" />
+                <ScalarProperty Name="ApelidoInstalacao" ColumnName="ApelidoInstalacao" />
+                <ScalarProperty Name="InstalacaoUsoComum" ColumnName="InstalacaoUsoComum" />
+                <ScalarProperty Name="InstalacaoAtiva" ColumnName="InstalacaoAtiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametroSistema">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.ParametroSistema">
+              <MappingFragment StoreEntitySet="ParametroSistema">
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+                <ScalarProperty Name="IdTaxa" ColumnName="IdTaxa" />
+                <ScalarProperty Name="QtdInstalacoes" ColumnName="QtdInstalacoes" />
+                <ScalarProperty Name="MetaDeConsumoIndividual" ColumnName="MetaDeConsumoIndividual" />
+                <ScalarProperty Name="ValorParaAlerta" ColumnName="ValorParaAlerta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="IdPessoa" ColumnName="IdPessoa" />
+                <ScalarProperty Name="IdInstalacao" ColumnName="IdInstalacao" />
+                <ScalarProperty Name="TipoPerfil" ColumnName="TipoPerfil" />
+                <ScalarProperty Name="PerfilAtivo" ColumnName="PerfilAtivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="IdPessoa" ColumnName="IdPessoa" />
+                <ScalarProperty Name="CPF_CNPJ" ColumnName="CPF_CNPJ" />
+                <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
+                <ScalarProperty Name="IdTelefone" ColumnName="IdTelefone" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="PessoaAtiva" ColumnName="PessoaAtiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxas">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Taxas">
+              <MappingFragment StoreEntitySet="Taxas">
+                <ScalarProperty Name="IdTaxa" ColumnName="IdTaxa" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="DataInicioVigencia" ColumnName="DataInicioVigencia" />
+                <ScalarProperty Name="DataFimVigencia" ColumnName="DataFimVigencia" />
+                <ScalarProperty Name="QuantidadeMinimaM3" ColumnName="QuantidadeMinimaM3" />
+                <ScalarProperty Name="QuantidadeMaximaM3" ColumnName="QuantidadeMaximaM3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefone">
+            <EntityTypeMapping TypeName="HIDROVIVAModel.Telefone">
+              <MappingFragment StoreEntitySet="Telefone">
+                <ScalarProperty Name="IdTelefone" ColumnName="IdTelefone" />
+                <ScalarProperty Name="Telefone1" ColumnName="Telefone1" />
+                <ScalarProperty Name="Telefone2" ColumnName="Telefone2" />
+                <ScalarProperty Name="Telefone3" ColumnName="Telefone3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
