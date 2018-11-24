@@ -217,7 +217,15 @@
     <Compile Include="Models\Instalacao.cs">
       <DependentUpon>HIDROVIVA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Interface\IEnderecoRepositorio.cs" />
+    <Compile Include="Models\Interface\IConsumoDiarioRepositorio.cs" />
+    <Compile Include="Models\Interface\IConsumoMensalRepositorio.cs" />
+    <Compile Include="Models\Interface\IInstalacaoRespositorio.cs" />
+    <Compile Include="Models\Interface\IParametroSistemaRepositoriocs.cs" />
+    <Compile Include="Models\Interface\IPerfilRepositorio.cs.cs" />
     <Compile Include="Models\Interface\IPessoaRepositorio.cs" />
+    <Compile Include="Models\Interface\ITaxasRepositorio.cs" />
+    <Compile Include="Models\Interface\ITelefoneRepositorio.cs" />
     <Compile Include="Models\ParametroSistema.cs">
       <DependentUpon>HIDROVIVA.tt</DependentUpon>
     </Compile>
@@ -227,7 +235,15 @@
     <Compile Include="Models\Pessoa.cs">
       <DependentUpon>HIDROVIVA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repositorio\ConsumoDiarioRepositorio.cs" />
+    <Compile Include="Models\Repositorio\ConsumoMensalRepositorio.cs" />
+    <Compile Include="Models\Repositorio\EnderecoRepositorio.cs" />
+    <Compile Include="Models\Repositorio\InstalacaoRespositorio.cs" />
+    <Compile Include="Models\Repositorio\ParametroSistemaRepositorio.cs" />
+    <Compile Include="Models\Repositorio\PerfilRepositorio.cs" />
     <Compile Include="Models\Repositorio\PessoaRepositorio.cs" />
+    <Compile Include="Models\Repositorio\TaxasRepositorio.cs" />
+    <Compile Include="Models\Repositorio\TelefoneRepositorio.cs" />
     <Compile Include="Models\Taxas.cs">
       <DependentUpon>HIDROVIVA.tt</DependentUpon>
     </Compile>
