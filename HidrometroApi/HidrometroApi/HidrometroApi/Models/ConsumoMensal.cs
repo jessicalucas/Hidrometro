@@ -11,16 +11,20 @@ namespace HidrometroApi.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ConsumoMensal
     {
+        public ConsumoMensal()
+        {
+            this.ConsumoDiario = new List<ConsumoDiario>();
+        }
         public long IdConsumoMensal { get; set; }
         public long? IdConsumoDiario { get; set; }
         public decimal? TotalConsumido { get; set; }
         public decimal? Premiacao { get; set; }
         public decimal? Advertencia { get; set; }
         public DateTime? MesAno { get; set; }
-    
-        public virtual ConsumoDiario ConsumoDiario { get; set; }
+
+        public virtual ICollection<ConsumoDiario> ConsumoDiario { get; set; }
     }
 }

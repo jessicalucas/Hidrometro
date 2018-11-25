@@ -5,7 +5,12 @@ using System.Web;
 
 namespace HidrometroApi.Models.Interface
 {
-    public class IConsumoMensalRepositorio
+    public interface IConsumoMensalRepositorio
     {
+        IEnumerable<ConsumoMensal> GetAll();
+        ConsumoMensal Get(int id);
+        ConsumoMensal Add(ConsumoMensal item);
+        void Remove(int id);
+        bool Update(ConsumoMensal item);
     }
 }

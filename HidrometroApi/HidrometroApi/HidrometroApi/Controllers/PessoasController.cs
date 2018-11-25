@@ -10,18 +10,18 @@ using System.Web.Http;
 
 namespace HidrometroApi.Controllers
 {
-    public class PessoasController : ApiController
+    public class PessoaController : ApiController
     {
         static readonly IPessoaRepositorio repositorio = new PessoaRepositorio();
 
-        public IEnumerable<Pessoa> GetAllPessoas()
+        public IEnumerable<Pessoa> GetAll()
         {
             return repositorio.GetAll();
         }
 
-        public Pessoa GetPessoa(int id)
+        public Pessoa Get(int id)
         {
-            Pessoa item = repositorio.GetPessoa(id);
+            Pessoa item = repositorio.Get(id);
             if (item == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -29,15 +29,15 @@ namespace HidrometroApi.Controllers
             return item;
         }
 
-        //public IEnumerable<Pessoa> GetPessoasPorCategoria(string categoria)
+        //public IEnumerable<Pessoa> GetlistaPessoaPorCategoria(string categoria)
         //{
         //    return repositorio.GetAll().Where(
         //        p => string.Equals(p.Categoria, categoria, StringComparison.OrdinalIgnoreCase));
         //}
 
-        public HttpResponseMessage PostPessoa(Pessoa item)
+        public HttpResponseMessage Post(Pessoa item)
         {
-            item = repositorio.AddPessoa(item);
+            item = repositorio.Add(item);
             var response = Request.CreateResponse<Pessoa>(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.IdPessoa });
@@ -45,25 +45,25 @@ namespace HidrometroApi.Controllers
             return response;
         }
 
-        public void PutPessoa(int id, Pessoa pessoa)
+        public void Put(int id, Pessoa pessoa)
         {
             pessoa.IdPessoa = id;
-            if (!repositorio.UpdatePessoa(pessoa))
+            if (!repositorio.Update(pessoa))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
         }
 
-        public void DeletePessoa(int id)
+        public void Delete(int id)
         {
-            Pessoa item = repositorio.GetPessoa(id);
+            Pessoa item = repositorio.Get(id);
 
             if (item == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            repositorio.RemovePessoa(id);
+            repositorio.Remove(id);
         }
 
     }

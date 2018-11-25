@@ -5,7 +5,12 @@ using System.Web;
 
 namespace HidrometroApi.Models.Interface
 {
-    public class ITaxasRepositorio
+    public interface ITaxasRepositorio
     {
+        IEnumerable<Taxas> GetAll();
+        Taxas Get(int id);
+        Taxas Add(Taxas item);
+        void Remove(int id);
+        bool Update(Taxas item);
     }
 }

@@ -8,9 +8,9 @@ namespace HidrometroApi.Models.Interface
     public interface IPessoaRepositorio
     {
         IEnumerable<Pessoa> GetAll();
-        Pessoa GetPessoa(int id);
-        Pessoa AddPessoa(Pessoa item);
-        void RemovePessoa(int id);
-        bool UpdatePessoa(Pessoa item);
+        Pessoa Get(int id);
+        Pessoa Add(Pessoa item);
+        void Remove(int id);
+        bool Update(Pessoa item);
     }
 }

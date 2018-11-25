@@ -14,17 +14,11 @@ namespace HidrometroApi.Models
 
     public partial class ConsumoDiario
     {
-        public ConsumoDiario()
-        {
-            this.ConsumoMensal = new List<ConsumoMensal>();
-        }
-
         public long IdConsumoDiario { get; set; }
         public long? IdPerfil { get; set; }
         public DateTime? DataConsumo { get; set; }
         public decimal? M3Consumidos { get; set; }
 
         public virtual Perfil Perfil { get; set; }
-        public virtual ICollection<ConsumoMensal> ConsumoMensal { get; set; }
     }
 }
