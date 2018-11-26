@@ -14,11 +14,6 @@ namespace HidrometroApi.Models
 
     public partial class Pessoa
     {
-        public Pessoa()
-        {
-            this.Perfil = new List<Perfil>();
-        }
-
         public long IdPessoa { get; set; }
         public string CPF_CNPJ { get; set; }
         public long? IdEndereco { get; set; }
@@ -30,7 +25,7 @@ namespace HidrometroApi.Models
         public bool PessoaAtiva { get; set; }
 
         public virtual Endereco Endereco { get; set; }
-        public virtual ICollection<Perfil> Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }
         public virtual Telefone Telefone { get; set; }
     }
 }
